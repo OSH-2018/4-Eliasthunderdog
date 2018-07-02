@@ -10,14 +10,14 @@
 #define __rtm_force_inline __attribute__((__always_inline__)) inline
 
 static __rtm_force_inline int _xbegin(void)
-{
+{// reference: https://github.com/defuse/flush-reload-attacks
 	int ret = _XBEGIN_STARTED;
 	asm volatile(".byte 0xc7,0xf8 ; .long 0" : "+a" (ret) :: "memory");
 	return ret;
 }
 
 static __rtm_force_inline void _xend(void)
-{
+{// reference: https://github.com/defuse/flush-reload-attacks
 	 asm volatile(".byte 0x0f,0x01,0xd5" ::: "memory");
 }
 
