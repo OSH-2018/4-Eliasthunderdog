@@ -73,6 +73,7 @@ int main(int argc, char** argv)
 
   unsigned long start_addr = (unsigned long)secret;
   len = strlen(secret);
+
    
   char* poke = (char*)mmap(NULL, 256 * page_size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_SHARED, -1, 0);
       
